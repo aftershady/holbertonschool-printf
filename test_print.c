@@ -1,16 +1,4 @@
-#include <unistd.h>
 
-/**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
 
 #ifndef MAIN_H
 #define MAIN_H
@@ -27,13 +15,30 @@ typedef struct type
 	int (*pointer_function)(va_list, int);
 } type;
 
-int _putchar(char c);
+
 int get_func_print(char *str, va_list, int siz);
 int print_char(va_list list, int size);
 int print_string(va_list list, int size);
 int print_modulo(va_list list, int);
+int _printf(const char *format, ...);
 
 #endif
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -55,7 +60,7 @@ int print_modulo(va_list list, int size)
 int print_string(va_list list, int size)
 {
 	char *ptr;
-	*ptr = va_arg(list, char *); /** extracting the string */
+	ptr = va_arg(list, char *); /** extracting the string */
 	int i = 0;
 
 	if (ptr != NULL) /** A GERER */
@@ -87,6 +92,7 @@ int (*get_function_print(char letter))(va_list, int)
 		i++;
 	}
 	return check_type[i].pointer_function;
+	return (0);
 }
 
 /** _printf   fonction */
@@ -96,7 +102,7 @@ int _printf(const char *format, ...)
 {
 	va_list list;
 	int size = 0;
-	int *str = format;
+	const char *str = format;
 
 	va_start(list, format);
 	if (format)
@@ -133,18 +139,15 @@ int _printf(const char *format, ...)
 		return size;
 	}
 }
+}
 
-int _putchar(char c);
-int get_func_print(char *str, va_list, int siz);
-int print_char(va_list, int size);
-int print_string(va_list, int size);
-int print_modulo(va_list, int);
-/** Programme principal pour tester _printf */
+
+/** test  */
+int _printf(const char *format, ...);
 void main(void)
 {
 	int testx;
 
 	// Test pour %c
-	testx = _printf("Test de %c\n", 'A');
-	printf("Nombre de caractères imprimés : %d\n", testx);
+	_printf("Test de \n");
 }
