@@ -15,10 +15,9 @@ typedef struct type
 } type;
 
 int (*get_function_print(char letter))(va_list, int);
-int print_char(va_list list, int);
-int print_string(va_list list, int);
-int print_modulo(va_list list, int);
-int print_int(va_list list, int);
+int print_char(va_list list, int size);
+int print_string(va_list list, int size);
+int print_modulo(va_list list, int size);
 int _printf(const char *format, ...);
 int _putchar(char c);
 

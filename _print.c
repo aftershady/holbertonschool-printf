@@ -1,10 +1,18 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "main.h"
+/**
+ * _printf - Produces output according to a format
+ * @format: The format string
+ *
+ * Return: The number of characters printed
+ **/
+
 int _printf(const char *format, ...)
 {
 	va_list list;
 	int size = 0;
+	
 	const char *str;
 	str = format;
 

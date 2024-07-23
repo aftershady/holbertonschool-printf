@@ -1,39 +1,55 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include "main.h"
+#include <unistd.h>
 
 /**
-*print_char - Prints a character
-*@list: va_list containing the character to print
-*@int: number of arguments
-* Return: Number of characters printed (always 1)
-**/
-int print_char(va_list list, int)
+ * _putchar - Writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1, on error -1
+ */
+int _putchar(char c)
 {
+	return write(1, &c, 1);
+}
+
+/**
+ *print_char - Prints a character
+ *@list: va_list containing the character to print
+ *@size: number of arguments
+ * Return: Number of characters printed (always 1)
+ **/
+int print_char(va_list list, int size)
+{
+	(void)size;
 	_putchar(va_arg(list, int));
 	return (1); /** always one */
 }
 
 /**
-*print_modulo - Prints a modulo
-*@list: va_list containing the string to print
-*@int: number of arguments
-*Return: Number of characters printed (length of the string)
-*/
-int print_modulo(va_list list, int)
+ *print_modulo - Prints a modulo
+ *@list: va_list containing the string to print
+ *@size: number of arguments
+ *Return: Number of characters printed (length of the string)
+ */
+int print_modulo(va_list list, int size)
 {
+	(void)size;
+	(void)list;
 	_putchar('%');
 	return (1); /** always one */
 }
 
 /**
-*print_string - Prints a string
-*@list: va_list containing the string to print
-*@int: number of arguments
-*Return: Number of characters printed (length of the string)
-*/
-int print_string(va_list list, int)
+ *print_string - Prints a string
+ *@list: va_list containing the string to print
+ *@size: number of arguments
+ *Return: Number of characters printed (length of the string)
+ */
+int print_string(va_list list, int size)
 {
+	(void)size;
 	char *ptr;
 
 	ptr = va_arg(list, char *); /** extracting the string */
@@ -49,4 +65,3 @@ int print_string(va_list list, int)
 	}
 	return (i); /** length of the string */
 }
-

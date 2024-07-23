@@ -19,7 +19,7 @@ int (*get_function_print(char letter))(va_list, int)
 		{'\0', NULL}};
 
 	int i = 0;
-	
+
 	while (check_type[i].letter != '\0')
 	{
 		if (check_type[i].letter == letter)
