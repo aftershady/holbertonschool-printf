@@ -16,10 +16,10 @@ typedef struct type
 } type;
 
 
-int get_func_print(char *str, va_list, int siz);
+int (*get_function_print(char letter))(va_list, int);
 int print_char(va_list list, int size);
 int print_string(va_list list, int size);
-int print_modulo(va_list list, int);
+int print_modulo(va_list list, int size);
 int _printf(const char *format, ...);
 
 #endif
@@ -27,6 +27,7 @@ int _printf(const char *format, ...);
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdarg.h>
 
 /**
  * _putchar - writes the character c to stdout
@@ -80,11 +81,11 @@ int print_string(va_list list, int size)
 
 int (*get_function_print(char letter))(va_list, int)
 {
-	type check_type[] = {
+	type check_type[] =
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_modulo},
-		{'\0', NULL}};
+		{'\0', NULL};
 
 	int i = 0;
 	while (check_type[i].letter != '\0' && check_type[i].letter != letter)
@@ -102,7 +103,8 @@ int _printf(const char *format, ...)
 {
 	va_list list;
 	int size = 0;
-	const char *str = format;
+	const char *str;
+	str = format;
 
 	va_start(list, format);
 	if (format)
@@ -125,20 +127,21 @@ int _printf(const char *format, ...)
 						_putchar(*str);
 						size += 2; /**  the modulo  + the  char after */
 					}
-					str++; /** continue */
+
 				}
 			}
 			else
 			{
 				_putchar(*str); /** no modulo found */
 				size++;
-			}
+
 			str++;
+			}
 		}
 		va_end(list);
-		return size;
 	}
-}
+	return(size);
+	}
 }
 
 
