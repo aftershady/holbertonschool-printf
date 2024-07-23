@@ -6,6 +6,7 @@
  * struct type - contain a character and a pointer of function
  * @letter: can contain a character
  * @pointer_function: can contain a function who return a int
+ * @int: number of arguments
  */
 typedef struct type
 {
@@ -14,10 +15,10 @@ typedef struct type
 } type;
 
 int (*get_function_print(char letter))(va_list, int);
-int print_char(va_list list);
-int print_string(va_list list);
-int print_modulo(va_list list);
-int print_int(va_list list);
+int print_char(va_list list, int);
+int print_string(va_list list, int);
+int print_modulo(va_list list, int);
+int print_int(va_list list, int);
 int _printf(const char *format, ...);
 int _putchar(char c);
 
