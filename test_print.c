@@ -71,7 +71,7 @@ int print_string(va_list list, int size)
 		putchar(ptr[i]); /**  print every charactère of the string**/
 		i++;
 	}
-
+	}
 	return (i); /** length of the string */
 }
 
@@ -81,11 +81,12 @@ int print_string(va_list list, int size)
 
 int (*get_function_print(char letter))(va_list, int)
 {
-	type check_type[] =
+	type check_type[] = {
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_modulo},
-		{'\0', NULL};
+		{'\0', NULL},
+};
 
 	int i = 0;
 	while (check_type[i].letter != '\0' && check_type[i].letter != letter)
@@ -93,12 +94,13 @@ int (*get_function_print(char letter))(va_list, int)
 		i++;
 	}
 	return check_type[i].pointer_function;
-	return (0);
+
 }
 
 /** _printf   fonction */
 
-
+#include <stdio.h>
+#include <stdarg.h>
 int _printf(const char *format, ...)
 {
 	va_list list;
@@ -132,25 +134,34 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
+
 				_putchar(*str); /** no modulo found */
 				size++;
+			}
 
 			str++;
 			}
 		}
+
+
 		va_end(list);
-	}
+
+
 	return(size);
-	}
+
 }
+
 
 
 /** test  */
 int _printf(const char *format, ...);
 void main(void)
 {
+	char *s = "hello";
 	int testx;
+	char c;
+	c = 'a';
 
 	// Test pour %c
-	_printf("Test de \n");
+	_printf("imprime ca %s et %c\n", s, c);
 }
