@@ -15,11 +15,11 @@ typedef struct type
 	int (*pointer_function)(va_list, int);
 } type;
 
-
 int (*get_function_print(char letter))(va_list, int);
 int print_char(va_list list, int size);
 int print_string(va_list list, int size);
 int print_modulo(va_list list, int size);
+int print_int(va_list list, int size);
 int _printf(const char *format, ...);
 
 #endif
@@ -46,18 +46,18 @@ int _putchar(char c)
 /** print functions for each type */
 int print_char(va_list list, int size)
 {
-	char c;
-	c = va_arg(list, int);
-	_putchar(c);
+	putchar(va_arg(list, int));
 	return (1); /** always one */
 }
 
+/** print modulo */
 int print_modulo(va_list list, int size)
 {
 	_putchar('%');
 	return (1); /** always one */
 }
 
+/** print string */
 int print_string(va_list list, int size)
 {
 	char *ptr;
@@ -66,14 +66,16 @@ int print_string(va_list list, int size)
 
 	if (ptr != NULL) /** A GERER */
 	{
-	while (ptr[i] != '\0')
-	{
-		putchar(ptr[i]); /**  print every charactère of the string**/
-		i++;
-	}
+		while (ptr[i] != '\0')
+		{
+			putchar(ptr[i]); /**  print every charactère of the string**/
+			i++;
+		}
 	}
 	return (i); /** length of the string */
 }
+
+/** print integer */
 
 #include <stdio.h>
 #include <stdarg.h>
@@ -85,16 +87,17 @@ int (*get_function_print(char letter))(va_list, int)
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_modulo},
-		{'\0', NULL},
-};
+		{'\0', NULL}};
 
 	int i = 0;
-	while (check_type[i].letter != '\0' && check_type[i].letter != letter)
+	while (check_type[i].letter != '\0')
 	{
+		if (check_type[i].letter == letter)
+			return (check_type[i].pointer_function);
 		i++;
 	}
-	return check_type[i].pointer_function;
 
+	return (NULL); // Ensure function ends correctly
 }
 
 /** _printf   fonction */
@@ -129,7 +132,6 @@ int _printf(const char *format, ...)
 						_putchar(*str);
 						size += 2; /**  the modulo  + the  char after */
 					}
-
 				}
 			}
 			else
@@ -140,28 +142,22 @@ int _printf(const char *format, ...)
 			}
 
 			str++;
-			}
 		}
+	}
 
+	va_end(list);
 
-		va_end(list);
-
-
-	return(size);
-
+	return (size);
 }
 
-
-
-/** test  */
-int _printf(const char *format, ...);
-void main(void)
+int main(void)
 {
-	char *s = "hello";
-	int testx;
-	char c;
-	c = 'a';
+    char *s = "hello";
+    char c = 'a';  // Correct initialization
 
-	// Test pour %c
-	_printf("imprime ca %s et %c\n", s, c);
+    // Test for %c
+    int testx = _printf("imprime ca %s et %c\n", s, c);
+    printf("Number of characters printed: %d\n", testx);
+
+    return (0);
 }
