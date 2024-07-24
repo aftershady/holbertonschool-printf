@@ -66,3 +66,41 @@ int print_string(va_list list, int size)
 	}
 	return (i); /** length of the string */
 }
+int print_integer(va_list list, int size)
+{
+	int integer = va_arg(list, int);
+	char str[12];
+	char temp[12];
+	int i = 0;
+	int j;
+
+
+	(void)size;
+	if(integer != 0)
+	{
+		while((integer / 10) != 0)
+		{
+			temp[i] = (integer % 10);
+			integer = (integer / 10);
+			i++;
+		}
+		temp[i] = (integer % 10);
+		for(j = 0; i != 0; j++, i--)
+		{
+			str[j] = temp[i];
+		}
+		for(i = 0; str[i] != '\0'; i++)
+		{
+			_putchar(str[i] + '0');
+
+		}
+		_putchar(str[i] + '0');
+	}
+
+	else
+	{
+		_putchar('0');
+		j = 1;
+	}
+	return (j);
+}
