@@ -49,9 +49,10 @@ int print_modulo(va_list list, int size)
  */
 int print_string(va_list list, int size)
 {
-	(void)size;
 	char *ptr;
 	int i;
+
+	(void)size;
 
 	ptr = va_arg(list, char *); /** extracting the string */
 	i = 0;
