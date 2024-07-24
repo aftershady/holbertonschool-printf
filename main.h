@@ -6,7 +6,6 @@
  * struct type - contain a character and a pointer of function
  * @letter: can contain a character
  * @pointer_function: can contain a function who return a int
- * @int: number of arguments
  */
 typedef struct type
 {

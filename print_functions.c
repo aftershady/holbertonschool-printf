@@ -11,7 +11,7 @@
  */
 int _putchar(char c)
 {
-	return write(1, &c, 1);
+	return (write(1, &c, 1));
 }
 
 /**
@@ -51,10 +51,10 @@ int print_string(va_list list, int size)
 {
 	(void)size;
 	char *ptr;
+	int i;
 
 	ptr = va_arg(list, char *); /** extracting the string */
-	int i = 0;
-
+	i = 0;
 	if (ptr != NULL)
 	{
 		while (ptr[i] != '\0')

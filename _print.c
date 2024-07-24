@@ -12,10 +12,9 @@ int _printf(const char *format, ...)
 {
 	va_list list;
 	int size = 0;
-	
 	const char *str;
-	str = format;
 
+	str = format;
 	va_start(list, format);
 	if (format)
 	{
@@ -23,10 +22,11 @@ int _printf(const char *format, ...)
 		{
 			if (*str == '%')
 			{
-				str++; // check the next character  if its %c %% or %s
+				str++; /*check the next character  if its %c %% or %s*/
 				if (*str != '\0')
 				{
 					int (*func)(va_list, int) = get_function_print(*str);
+
 					if (func)
 					{
 						size += func(list, size); /** adds number of %c or %s to size */
@@ -41,16 +41,12 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-
 				_putchar(*str); /** no modulo found */
 				size++;
 			}
-
 			str++;
 		}
 	}
-
 	va_end(list);
-
 	return (size);
 }
