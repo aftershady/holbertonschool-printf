@@ -7,8 +7,7 @@
  * @letter: The specifier character.
  *
  *Return: A pointer to the corresponding function.
- *Reuturn: NULL if no valid specifier is found.
- **/
+ */
 
 int (*get_function_print(char letter))(va_list, int)
 {
