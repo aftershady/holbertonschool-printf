@@ -66,37 +66,51 @@ int print_string(va_list list, int size)
 	}
 	return (i); /** length of the string */
 }
+/**
+*print_integer - function that Prints an integer as characters.
+*@list: A list of arguments containing the integer to print.
+*@size: Format size
+*
+*Return: the number of character printed and prints it
+**/
+
 int print_integer(va_list list, int size)
 {
 	int integer = va_arg(list, int);
 	char str[12];
 	char temp[12];
-	int i = 0;
+	int i;
+	int is_negative = 0; /** initialising the flag for checking the */
 	int j;
 
-
 	(void)size;
-	if(integer != 0)
+	if (integer < 0) /** checcking if the number is negative */
 	{
-		while((integer / 10) != 0)
+		is_negative = 1; /** the flag set to 1 */
+		integer = -integer; /** transforming it to negative number */
+	}
+	if (integer != 0)
+	{
+		for (i = 0; (integer / 10) != 0; i++)
 		{
 			temp[i] = (integer % 10);
 			integer = (integer / 10);
-			i++;
 		}
 		temp[i] = (integer % 10);
-		for(j = 0; i != 0; j++, i--)
+		for (j = 0; i >= 0; j++, i--)
 		{
 			str[j] = temp[i];
 		}
-		for(i = 0; str[i] != '\0'; i++)
+		str[j] = '\0';
+		if (is_negative) /** the number is negative*/
+		{
+			_putchar('-'); /** printing the negative signe befor */
+		}
+		for (i = 0; str[i] != '\0'; i++)
 		{
 			_putchar(str[i] + '0');
-
 		}
-		_putchar(str[i] + '0');
 	}
-
 	else
 	{
 		_putchar('0');

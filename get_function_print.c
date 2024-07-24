@@ -15,6 +15,8 @@ int (*get_function_print(char letter))(va_list, int)
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_modulo},
+		{'i', print_integer},
+		{'d', print_integer},
 		{'\0', NULL}};
 
 	int i = 0;
