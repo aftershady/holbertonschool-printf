@@ -1,0 +1,109 @@
+.Dd 25/07/24
+.Dt _printf man(3)    
+.Os Linux mint cinamon / windows 11
+.Sh NAME             
+.Nm _printf()
+.Nd print diferents values of diferents types in a string printed
+.Sh SYNOPSIS             \" Section Header - required - don't modify
+.Ar #include "main.h"
+.br
+.br
+.Ar int _printf(const char *format, ...)
+
+.Sh DESCRIPTION       
+
+The function
+.Nm _printf()
+produce an output according to a format.
+
+
+this fonction write a string with formated variables of differents types in it.
+.br 
+The formats are reprented by :
+.br
+.Nm %d 
+or 
+.Nm %i 
+for integers values
+.br
+.Nm %c 
+for a single character
+.br
+.Nm %s 
+for a string
+.br
+.Nm %% 
+for the character '%'
+.br
+the number of arguments is unknown and define by the number of % on the string.
+.br
+arguments need to be given in the parentheses, the type of the argument and
+the type of the format need to match for the function work
+
+.Sh FILES                \" File used or created by the topic of the man page
+.Bl -tag -width -compact
+_PRINT_C
+.br
+contain the function
+.Nm int _printf(const char *format, ...)
+prints a string, send it if she is not = to NULL and check if there is a 
+% in the string
+.br
+
+GET_FUNCTION_PRINT_C 
+.br
+contain the function 
+.Nm int (*get_function_print(char letter))(va_list, int)
+ searches in the string if there is a 'c' 's' 'i' 'd' or '%' after the 
+character %
+.br
+
+PRINT_FUNCTIONS_C
+.br
+contain the functions :
+.br
+.Nm int print_char(va_list list, int size)
+.br
+.Nm int print_modulo(va_list list, int size)
+.br
+.Nm int print_string(va_list list, int size)
+.br
+.Nm int print_integer(va_list list, int size)
+.br
+those fonctions print in the console an argument of a vaiadic function send 
+by the previous function
+
+.br
+_PUTCHAR_C
+.br
+contain the function
+.Nm int _putchar(char c) 
+ prints a single character
+.br
+
+_PRINT_REV_C
+.br
+contain the function
+.Nm void _print_rev(char *s)
+prints a string in reverse
+.br
+
+_MAIN_H
+.br
+contain all the prototypes of the functions needed int the function 
+.Nm
+
+.Sh RETURN VALUE
+
+this function returns the number of characters printed in the format of an 
+integer value
+
+.Sh CREATED BY
+
+Jonathan 
+.br
+https://github.com/aftershady
+.br
+Lamine
+.br
+https://github.com/Xdamix1991
