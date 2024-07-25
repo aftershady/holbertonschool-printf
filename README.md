@@ -34,5 +34,5 @@ compiled with gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format
 ## flowchart
 
 this flowchat detail primary functionement of the code
-<img src="flowchart.png">
+<img src="https://github.com/aftershady/holbertonschool-printf/blob/main/flowchart.png?raw=true" alt="flowchart of function">
 
