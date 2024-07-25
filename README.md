@@ -26,7 +26,6 @@ example :
 _printf("printed %d", integer);
 
 Return the number of characters printed
-```
 
 ## compilation
 

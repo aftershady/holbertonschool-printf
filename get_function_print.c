@@ -9,7 +9,7 @@
  *Return: A pointer to the corresponding function.
  */
 
-int (*get_function_print(char letter))(va_list, int)
+int (*get_function_print(char letter))(va_list)
 {
 	type check_type[] = {
 		{'c', print_char},

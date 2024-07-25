@@ -9,9 +9,9 @@
  *@size: number of arguments
  * Return: Number of characters printed (always 1)
  **/
-int print_char(va_list list, int size)
+int print_char(va_list list)
 {
-	(void)size;
+
 	_putchar(va_arg(list, int));
 	return (1); /** always one */
 }
@@ -22,9 +22,9 @@ int print_char(va_list list, int size)
  *@size: number of arguments
  *Return: Number of characters printed (length of the string)
  */
-int print_modulo(va_list list, int size)
+int print_modulo(va_list list)
 {
-	(void)size;
+
 	(void)list;
 	_putchar('%');
 	return (1); /** always one */
@@ -36,12 +36,12 @@ int print_modulo(va_list list, int size)
  *@size: number of arguments
  *Return: Number of characters printed (length of the string)
  */
-int print_string(va_list list, int size)
+int print_string(va_list list)
 {
 	char *ptr;
 	int i;
 
-	(void)size;
+
 
 	ptr = va_arg(list, char *); /** extracting the string */
 	i = 0;
@@ -63,14 +63,14 @@ int print_string(va_list list, int size)
 *Return: the number of character printed.
 **/
 
-int print_integer(va_list list, int size)
+int print_integer(va_list list)
 {
 	int integer = va_arg(list, int);
 	char str[12];
 	int i;
 	int is_negative = 0; /** initialising the flag for checking the */
 
-	(void)size;
+
 	if (integer < 0) /** checcking if the number is negative */
 	{	is_negative = 1; /** the flag set to 1 */
 		integer = -integer; /** transforming it to negative number */

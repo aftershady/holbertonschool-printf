@@ -25,11 +25,11 @@ int _printf(const char *format, ...)
 				str++; /*check the next character  if its %c %% or %s*/
 				if (*str != '\0')
 				{
-					int (*func)(va_list, int) = get_function_print(*str);
+					int (*func)(va_list) = get_function_print(*str);
 
 					if (func)
 					{
-						size += func(list, size); /** adds number of %c or %s to size */
+						size += func(list); /** adds number of %c or %s to size */
 					}
 					else /** if no special charactér found (NO %c %s or %%) */
 					{
