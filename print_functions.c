@@ -4,17 +4,6 @@
 #include <unistd.h>
 
 /**
- * _putchar - Writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1, on error -1
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-/**
  *print_char - Prints a character
  *@list: va_list containing the character to print
  *@size: number of arguments
@@ -71,50 +60,37 @@ int print_string(va_list list, int size)
 *@list: A list of arguments containing the integer to print.
 *@size: Format size
 *
-*Return: the number of character printed and prints it
+*Return: the number of character printed.
 **/
 
 int print_integer(va_list list, int size)
 {
 	int integer = va_arg(list, int);
 	char str[12];
-	char temp[12];
 	int i;
 	int is_negative = 0; /** initialising the flag for checking the */
-	int j;
 
 	(void)size;
 	if (integer < 0) /** checcking if the number is negative */
-	{
-		is_negative = 1; /** the flag set to 1 */
+	{	is_negative = 1; /** the flag set to 1 */
 		integer = -integer; /** transforming it to negative number */
 	}
 	if (integer != 0)
 	{
 		for (i = 0; (integer / 10) != 0; i++)
-		{
-			temp[i] = (integer % 10);
+		{	str[i] = (integer % 10) + '0';
 			integer = (integer / 10);
 		}
-		temp[i] = (integer % 10);
-		for (j = 0; i >= 0; j++, i--)
-		{
-			str[j] = temp[i];
-		}
-		str[j] = '\0';
+		str[i] = (integer % 10) + '0';
+		i++;
+		str[i] = '\0';
 		if (is_negative) /** the number is negative*/
-		{
-			_putchar('-'); /** printing the negative signe befor */
-		}
-		for (i = 0; str[i] != '\0'; i++)
-		{
-			_putchar(str[i] + '0');
-		}
+		{	_putchar('-'); /** printing the negative signe befor */
+			i++; }
+		_print_rev(str);
 	}
 	else
-	{
-		_putchar('0');
-		j = 1;
-	}
-	return (j);
+	{	_putchar('0');
+		i = 1; }
+	return (i);
 }
