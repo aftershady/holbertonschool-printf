@@ -1,4 +1,6 @@
 # Prerequisites
+*.git
+*.vscode
 *.d
 
 # Object files
