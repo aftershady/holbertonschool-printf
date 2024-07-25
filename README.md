@@ -34,4 +34,5 @@ compiled with gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format
 ## flowchart
 
 this flowchat detail primary functionement of the code
-![Alt text](flowchart.png)
+file:///home/jonathan/REPOSITORIES/holbertonschool-printf/flowchart.png
+
