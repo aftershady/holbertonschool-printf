@@ -6,7 +6,6 @@
 /**
  *print_char - Prints a character
  *@list: va_list containing the character to print
- *@size: number of arguments
  * Return: Number of characters printed (always 1)
  **/
 int print_char(va_list list)
@@ -19,7 +18,6 @@ int print_char(va_list list)
 /**
  *print_modulo - Prints a modulo
  *@list: va_list containing the string to print
- *@size: number of arguments
  *Return: Number of characters printed (length of the string)
  */
 int print_modulo(va_list list)
@@ -33,7 +31,6 @@ int print_modulo(va_list list)
 /**
  *print_string - Prints a string
  *@list: va_list containing the string to print
- *@size: number of arguments
  *Return: Number of characters printed (length of the string)
  */
 int print_string(va_list list)
@@ -58,7 +55,6 @@ int print_string(va_list list)
 /**
 *print_integer - function that Prints an integer as characters.
 *@list: A list of arguments containing the integer to print.
-*@size: Format size
 *
 *Return: the number of character printed.
 **/

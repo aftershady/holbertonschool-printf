@@ -12,20 +12,18 @@ int _printf(const char *format, ...)
 {
 	va_list list;
 	int size = 0;
-	const char *str;
 
-	str = format;
 	va_start(list, format);
 	if (format)
 	{
-		while (*str != '\0')
+		while (*format != '\0')
 		{
-			if (*str == '%')
+			if (*format == '%')
 			{
-				str++; /*check the next character  if its %c %% or %s*/
-				if (*str != '\0')
+				format++; /*check the next character  if its %c %% or %s*/
+				if (*format != '\0')
 				{
-					int (*func)(va_list) = get_function_print(*str);
+					int (*func)(va_list) = get_function_print(*format);
 
 					if (func)
 					{
@@ -34,17 +32,17 @@ int _printf(const char *format, ...)
 					else /** if no special charactér found (NO %c %s or %%) */
 					{
 						_putchar('%');
-						_putchar(*str);
+						_putchar(*format);
 						size += 2; /**  the modulo  + the  char after */
 					}
 				}
 			}
 			else
 			{
-				_putchar(*str); /** no modulo found */
+				_putchar(*format); /** no modulo found */
 				size++;
 			}
-			str++;
+			format++;
 		}
 	}
 	va_end(list);
